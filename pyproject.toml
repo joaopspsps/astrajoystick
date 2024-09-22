@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "astrajoystick"
+description = "Control your Linux system with a joystick 🎮"
+version = "0.1.0"
+authors = [
+	{ name = "jops" },
+]
+requires-python = ">=3.11"
+dependencies = [
+	"evdev>=1.7.0",
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+
+[project.scripts]
+astrajoystick = "astrajoystick.__main__:main"

@@ -1,0 +1,28 @@
+# Optimized for going through slides in a slideshow.
+#
+# L1 and R1: space
+# L2 and R2: backspace
+
+[[bind]]
+input_etype = "EV_KEY"
+input_ecode = "BTN_PINKIE"
+[key.mapping.plain]
+out = "KEY_SPACE"
+
+[[bind]]
+input_etype = "EV_KEY"
+input_ecode = "BTN_TOP2"
+[bind.mapping.plain]
+out = "KEY_SPACE"
+
+[[bind]]
+input_etype = "EV_KEY"
+input_ecode = "BTN_BASE2"
+[bind.mapping.plain]
+out = "KEY_BACKSPACE"
+
+[[bind]]
+input_etype = "EV_KEY"
+input_ecode = "BTN_BASE"
+[bind.mapping.plain]
+out = "KEY_BACKSPACE"

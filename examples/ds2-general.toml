@@ -1,0 +1,205 @@
+[modifier]
+select = "BTN_BASE3"
+
+[template]
+wheel = { secs = 0.16,   minsecs = 0.03,   step = 0.005,    stepstep = 0.000001 }
+mouse = { secs = 0.0036, minsecs = 0.0012, step = 0.000012, stepstep = 0.000001 }
+
+# L1 -> tab
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_TOP2"
+[bind.mapping.plain]
+out = "KEY_TAB"
+
+# R1 -> space
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_PINKIE"
+[bind.mapping.plain]
+out = "KEY_SPACE"
+
+# L2 -> esc
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_BASE"
+[bind.mapping.plain]
+out = "KEY_ESC"
+
+# R2 -> backspace
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_BASE2"
+[bind.mapping.plain]
+out = "KEY_BACKSPACE"
+
+# square -> left mouse button
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_TOP"
+[bind.mapping.plain]
+out = "BTN_LEFT"
+
+# select + square -> middle mouse button
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_TOP"
+modifiers = [ "select" ]
+[bind.mapping.plain]
+out = "BTN_MIDDLE"
+
+# # select + square -> middle mouse button
+# [[bind]]
+# in_etype = "EV_KEY"
+# in_ecode = "BTN_TOP"
+# modifiers = [ "select" ]
+# [bind.mapping.text]
+# out = "hello, world"
+
+# circle -> right mouse button
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_THUMB"
+[bind.mapping.plain]
+out = "BTN_RIGHT"
+
+# start -> enter
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_BASE4"
+[bind.mapping.plain]
+out = "KEY_ENTER"
+
+# R3 press -> shift
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_BASE6"
+[bind.mapping.plain]
+out = "KEY_LEFTSHIFT"
+
+# R3 up or down -> super/meta
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_Z"
+[bind.mapping.preds]
+128  = { KEY_LEFTMETA = 0 }
+else = { KEY_LEFTMETA = 1 }
+
+# Same as above but with the "select" modifier. This is necessary so that
+# it works with other keys that use that modifier.
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_Z"
+modifiers = [ "select" ]
+[bind.mapping.preds]
+128  = { KEY_LEFTMETA = 0 }
+else = { KEY_LEFTMETA = 1 }
+
+# R3 left -> control
+# R3 right -> alt
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_RZ"
+[bind.mapping.preds]
+"<128" = { KEY_LEFTCTRL = 1 }
+128    = { KEY_LEFTCTRL = 0, KEY_LEFTALT = 0 }
+">128" = { KEY_LEFTALT = 1 }
+
+# Same as above but with the "select" modifier.
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_RZ"
+modifiers = [ "select" ]
+[bind.mapping.preds]
+"<128" = { KEY_LEFTCTRL = 1 }
+128    = { KEY_LEFTCTRL = 0, KEY_LEFTALT = 0 }
+">128" = { KEY_LEFTALT = 1 }
+
+# Dpad left -> arrow left
+# Dpad down -> arrow down
+# Dpad up -> arrow up
+# Dpad right -> arrow right
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_HAT0X"
+[bind.mapping.preds]
+-1 = { KEY_LEFT = 1 }
+0  = { KEY_LEFT = 0, KEY_RIGHT = 0 }
+1  = { KEY_RIGHT = 1 }
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_HAT0Y"
+[bind.mapping.preds]
+-1 = { KEY_UP = 1 }
+0  = { KEY_UP = 0, KEY_DOWN = 0 }
+1  = { KEY_DOWN = 1 }
+
+# select + Dpad left -> h
+# select + Dpad down -> j
+# select + Dpad up -> k
+# select + Dpad right -> l
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_HAT0X"
+modifiers = [ "select" ]
+[bind.mapping.preds]
+-1 = { KEY_H = 1 }
+0  = { KEY_H = 0, KEY_L = 0 }
+1  = { KEY_L = 1 }
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_HAT0Y"
+modifiers = [ "select" ]
+[bind.mapping.preds]
+-1 = { KEY_K = 1 }
+0  = { KEY_K = 0, KEY_J = 0 }
+1  = { KEY_J = 1 }
+
+# triangle -> wheel up
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_TRIGGER"
+[bind.motion]
+out_etype = "EV_REL"
+init = { REL_WHEEL = 0 }
+opts = "wheel"
+[bind.mapping.plain]
+out = "REL_WHEEL"
+
+# x -> wheel down
+[[bind]]
+in_etype = "EV_KEY"
+in_ecode = "BTN_THUMB2"
+[bind.motion]
+out_etype = "EV_REL"
+init = { REL_WHEEL = 0 }
+opts = "wheel"
+[bind.mapping.preds]
+0 = { REL_WHEEL = 0 }
+1 = { REL_WHEEL = -1 }
+
+# L3 left/right -> mouse motion left/right
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_X"
+[bind.motion]
+out_etype = "EV_REL"
+init = { REL_X = 0 }
+opts = "mouse"
+[bind.mapping.preds]
+"<128" = { REL_X = -1 }
+128    = { REL_X = 0 }
+">128" = { REL_X = 1 }
+
+# L3 up/down -> mouse motion up/down
+[[bind]]
+in_etype = "EV_ABS"
+in_ecode = "ABS_Y"
+[bind.motion]
+out_etype = "EV_REL"
+init = { REL_Y = 0 }
+opts = "mouse"
+[bind.mapping.preds]
+"<128" = { REL_Y = -1 }
+128    = { REL_Y = 0 }
+">128" = { REL_Y = 1 }
