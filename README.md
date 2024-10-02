@@ -132,3 +132,8 @@ customize it to suit your needs.
 
 -   [enjoy](https://github.com/cjacker/enjoy): The initial inspiration
     for `astrajoystick`, especially for the `MotionThread` code.
+
+## Licensing
+
+`astrajoystick` is available under the terms of the [Apache-2.0
+license](LICENSE).
